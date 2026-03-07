@@ -1,6 +1,6 @@
 import streamlit as st
 from streamlit_option_menu import option_menu
-from tools import Comparator, StrategyPro, Parameters, Report_Manager, Symbol_Manager, Folio_Manager
+from tools import Comparator, StrategyPro, Parameters, Report_Manager, Symbol_Manager
 
 try:
     st.set_page_config(layout="wide", page_title="StrategyPro")
@@ -15,12 +15,12 @@ footer {visibility: hidden;}
 </style> """
 st.markdown(PAGES_STYLE, unsafe_allow_html=True)
 
-tab_bar = ['Report Manager', 'Comparator', 'StrategyPro', 'Symbol Manager', 'Parameters', 'Folio Manager']
+tab_bar = ['Report Manager', 'Comparator', 'StrategyPro', 'Symbol Manager', 'Parameters']
 
 app = option_menu(
         menu_title=None,
         options=tab_bar,
-        icons=[' ', ' ', ' ', ' ', ' ', ' ', ' '],
+        icons=[' ', ' ', ' ', ' ', ' ', ' '],
         menu_icon='cast',
         orientation="horizontal",
         default_index=0,
@@ -40,5 +40,3 @@ if app == "StrategyPro":
     StrategyPro.app()
 if app == "Parameters":
     Parameters.app()
-if app == "Folio Manager":
-    Folio_Manager.app()
