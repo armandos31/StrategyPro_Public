@@ -1,55 +1,92 @@
-Analyze your trading systems with this tool!
-Install the requirements and go!
-To start it, just use this simple command:
+# StrategyPro
 
-> streamlit run main.py 
+**StrategyPro** is an open-source trading system analysis platform built with [Streamlit](https://streamlit.io/). It lets you import trade exports, organize your strategies, and analyze individual systems or entire portfolios with interactive charts, correlation matrices, and performance metrics.
 
-EXPORT YOUR TRADES:
-Here are the data you need to export in this order:
+---
 
-- EntryDate-Time (MM/DD/YYYY HH:mm:ss)
-- EntryPrice (Strategy entry price)
-- ExitDate-Time (MM/DD/YYYY HH:mm:ss)
-- ExitPrice (Strategy exit price)
-- SymbolName (Traded symbol name)
-- MarketPosition (1 for Long position, -1 for Short position)
-- Max Contracts (Number of contracts/shares traded)
-- Profit/Loss (Profit or loss of trade)
-- MaxPositionProfit (Maximum profit achieved in position)
-- MaxPositionLoss (Maximum loss achieved in position)
+## Quick Start
 
-The file should contain these data in a single column,each data element must be separated by the comma.
-The result you should get is as follows:
+```bash
+# 1. Clone the repository
+git clone https://github.com/armandoloconte/StrategyPro_Public.git
+cd StrategyPro_Public
 
-![risultato](https://github.com/user-attachments/assets/1a7bec39-d248-44fb-9c8c-54d7c9dd9968)
+# 2. Install dependencies
+pip install -r requirements.txt
 
+# 3. Launch the app
+streamlit run main.py
+```
 
+---
 
+## Importing Trades
 
-REPORT MANAGER:
-Here the name says it all, you can upload all your reports, the tool will automatically save them and you can add any tags you want so you can search them in the other tools according to your needs, of course if you replace an old report with a more updated one the tags will remain!
+Export your trades from your trading platform as a **comma-separated file** with the following columns **in this exact order**:
 
-<img width="705" alt="image" src="https://github.com/user-attachments/assets/7099bbe6-45f2-4d18-acc0-6e9585425914">
+| Column | Format | Description |
+|---|---|---|
+| `EntryDate-Time` | `MM/DD/YYYY HH:mm:ss` | Trade entry timestamp |
+| `EntryPrice` | numeric | Strategy entry price |
+| `ExitDate-Time` | `MM/DD/YYYY HH:mm:ss` | Trade exit timestamp |
+| `ExitPrice` | numeric | Strategy exit price |
+| `SymbolName` | string | Traded instrument name |
+| `MarketPosition` | `1` / `-1` | `1` = Long, `-1` = Short |
+| `MaxContracts` | numeric | Number of contracts/shares traded |
+| `Profit/Loss` | numeric | Net profit or loss of the trade |
+| `MaxPositionProfit` | numeric | Maximum unrealized profit during the trade |
+| `MaxPositionLoss` | numeric | Maximum unrealized loss during the trade |
 
+All values must be on a **single line per trade**, separated by commas, with no header row.
 
-SYMBOL MANAGER:
-A very simple and functional manager, you will be able to enter the symbols betrayed by your strategies, margins if required, and target markets, a very useful feature that will serve to do more in-depth analysis.
+![Import result](https://github.com/user-attachments/assets/1a7bec39-d248-44fb-9c8c-54d7c9dd9968)
 
-<img width="402" alt="image" src="https://github.com/user-attachments/assets/477987d7-4aca-4074-a057-b79e9cc56db5">
+---
 
+## Features
 
-COMPARATOR
-Do you have 100 strategies on Nasdaq, 50 on soybeans, 300 on equities and 400 on forex? How to choose the best one in the latest period that is overperforming? How to choose the best one only on equities? How to choose the best one between equity and forex in the last 2 months?
-Comparator will help you with just that, and it will do it with simplicity and speed..
-You will have an interactive table and charts that will help you in this arduous choice!
+### Report Manager
+Upload and organize your strategy reports. The tool automatically saves them and lets you attach custom tags for easy filtering across all other sections. If you replace an existing report with an updated version, your tags are preserved.
 
-<img width="1040" alt="image" src="https://github.com/user-attachments/assets/9b1439d3-d0ac-4eed-a073-916d13cc7cdc">
+<img width="705" alt="Report Manager" src="https://github.com/user-attachments/assets/7099bbe6-45f2-4d18-acc0-6e9585425914">
 
+---
 
-STRATEGYPRO
-The cornerstone of all software, select your strategies by markets, tags, names or performance, edit contracts, weightings and create your portfolio in the blink of an eye!
-Fast and extremely flexible it offers detailed analysis of your individual systems or entire portfolios, you can see correlations, returns, biases and so much more.. Try it, it's free!
+### Symbol Manager
+Register the symbols traded by your strategies, along with margin requirements and target markets. Symbol metadata is used throughout the platform to enable more granular analysis and filtering.
 
-<img width="1052" alt="image" src="https://github.com/user-attachments/assets/90bc639f-aac2-4ae8-b36e-69ba20c0bde7">
+<img width="402" alt="Symbol Manager" src="https://github.com/user-attachments/assets/477987d7-4aca-4074-a057-b79e9cc56db5">
 
+---
 
+### Comparator
+Quickly rank and compare large numbers of strategies across markets and time periods. Filter by market (e.g. Nasdaq, Forex, Equities), tags, or date range, and instantly identify the best-performing systems using an interactive table and charts.
+
+> *100 strategies on Nasdaq, 50 on soybeans, 400 on Forex — find the top performer in the last 2 months in seconds.*
+
+<img width="1040" alt="Comparator" src="https://github.com/user-attachments/assets/9b1439d3-d0ac-4eed-a073-916d13cc7cdc">
+
+---
+
+### StrategyPro
+The core of the platform. Select strategies by market, tag, name, or performance metrics, then configure contract sizes and weightings to build a portfolio in seconds. Analyze individual systems or full portfolios with:
+
+- Equity curves and drawdown charts
+- Return distributions and bias analysis
+- Correlation matrices between strategies
+- Portfolio-level performance statistics
+
+<img width="1052" alt="StrategyPro" src="https://github.com/user-attachments/assets/90bc639f-aac2-4ae8-b36e-69ba20c0bde7">
+
+---
+
+## Requirements
+
+- Python 3.9+
+- See [`requirements.txt`](requirements.txt) for the full dependency list
+
+---
+
+## License
+
+This project is open-source and free to use.
